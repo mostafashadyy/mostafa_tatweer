@@ -273,7 +273,7 @@ const Dashboard = () => {
                   <div className="flex items-center">
                     <div className="w-[78px] h-[8px] rounded-full bg-[#D9D9D9] relative overflow-hidden">
                       <div
-                        className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-[#A4B1C3] to-[#3D4759]"
+                        className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-[#A4B1C3]/80 to-[#3D4759]"
                         style={{ width: emp.progress }}
                       />
                     </div>
