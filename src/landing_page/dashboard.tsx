@@ -43,6 +43,45 @@ const meetingData = [
   },
 ];
 
+const employeeData = [
+  {
+    id: "202302431",
+    name: "Mostafa Shady",
+    position: "Ai Engineer",
+    progress: "89%",
+  },
+  {
+    id: "202501701",
+    name: "Elon Musk",
+    position: "Product Engineer",
+    progress: "69%",
+  },
+  {
+    id: "202009438",
+    name: "Mark Zucker",
+    position: "Lead Specialist",
+    progress: "93%",
+  },
+  {
+    id: "202126773",
+    name: "Bill Gates",
+    position: "HR Manager",
+    progress: "33%",
+  },
+  {
+    id: "202259834",
+    name: "Mark Ruffalo",
+    position: "Accountant",
+    progress: "54%",
+  },
+  {
+    id: "201994836",
+    name: "Robert Downey",
+    position: "Web Developer",
+    progress: "79%",
+  },
+];
+
 const Dashboard = () => {
   const [active, setActive] = useState("Dashboard");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -214,7 +253,41 @@ const Dashboard = () => {
           </Glass>
 
           <Glass width={850} height={191} outerRadius="22px" innerRadius="20px" opacityStart={0.5} opacityMiddle={0} opacityEnd={0.5}>
-            <h2 className="text-[16px] text-[#293141] text-center">Working on it now...</h2>
+            <div className="pt-[20px] pl-[30px] text-[#293141] w-full h-full overflow-y-scroll no-scrollbar">
+              {/* Title */}
+              <h1 className="text-[20px] mb-[15px]">Employees</h1>
+
+              {/* Headers */}
+              <div className="flex text-[13px] text-black/60 mb-[12px]">
+                <h2 className="w-[155px]">ID</h2>
+                <h2 className="w-[175px]">Name</h2>
+                <h2 className="w-[215px]">Position</h2>
+                <h2 className="w-[235px]">Performance</h2>
+              </div>
+
+              {employeeData.map((emp, index) => (
+                <div key={index} className="flex items-center text-[13px] text-[#293141] mb-[10px]">
+                  <h6 className="w-[155px]">{emp.id}</h6>
+                  <h2 className="w-[175px]">{emp.name}</h2>
+                  <h2 className="w-[215px]">{emp.position}</h2>
+                  <div className="flex items-center">
+                    <div className="w-[78px] h-[8px] rounded-full bg-[#D9D9D9] relative overflow-hidden">
+                      <div
+                        className="absolute top-0 left-0 h-full rounded-full bg-gradient-to-r from-[#A4B1C3] to-[#3D4759]"
+                        style={{ width: emp.progress }}
+                      />
+                    </div>
+                    <Image
+                      src="/icons/dots.svg"
+                      alt="More"
+                      width={16}
+                      height={4}
+                      className="ml-[90px]"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </Glass>
         </div>
 
