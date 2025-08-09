@@ -82,6 +82,24 @@ const employeeData = [
   },
 ];
 
+const topEmployees = [
+  {
+    name: "Bill Gates",
+    tasksCompleted: 112,
+    image: "/person images/person 2.jpeg",
+  },
+  {
+    name: "Roland Busch",
+    tasksCompleted: 109,
+    image: "/person images/person 5.jpeg",
+  },
+  {
+    name: "Arvind Krishna",
+    tasksCompleted: 103,
+    image: "/person images/person 6.jpeg",
+  },
+];
+
 const Dashboard = () => {
   const [active, setActive] = useState("Dashboard");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -251,18 +269,17 @@ const Dashboard = () => {
 
           <Glass width={850} height={253} outerRadius="22px" innerRadius="20px" opacityStart={0.5} opacityMiddle={0} opacityEnd={0.5}>
             <div className="pt-[20px] px-[30px] text-[#293141] w-full h-full">
-              {/* Header Row */}
+              
               <div className="flex items-center justify-between">
-                {/* Title */}
+                
                 <h1 className="text-[20px]">Average KPI Score</h1>
 
-                {/* Second Glass */}
-                <Glass width={149} height={40} outerRadius="12px" innerRadius="10px">
+                <Glass width={130} height={40} outerRadius="12px" innerRadius="10px">
                   <div className="flex items-center justify-between px-[15px] w-full h-full">
                     <div className="flex items-baseline text-[#293141]">
-                      <h1 className="text-[12px]">Past</h1>
-                      <h6 className="text-[12px] font-bold mx-1">6</h6>
-                      <h1 className="text-[12px]">months</h1>
+                      <h1 className="text-[10px]">Past</h1>
+                      <h6 className="text-[10px] font-bold mx-1">6</h6>
+                      <h1 className="text-[10px]">months</h1>
                     </div>
 
                     <Image
@@ -276,7 +293,6 @@ const Dashboard = () => {
                 </Glass>
               </div>
               
-              {/* Row 2: KPI left, Top Performance glass right */}
               <div className="flex items-start justify-between">
                 <div>
                   <h6 className="text-[20px] text-[#293141]">64.78%</h6>
@@ -290,6 +306,72 @@ const Dashboard = () => {
                     />
                     <span className="text-[12px] text-black/60">2.36</span>
                   </div>
+
+                  <div className="mt-[15px] ml-[16px]">
+                    <div className="flex items-start">
+                      
+                      <div className="relative h-[100px] w-[24px] text-black/60">
+                        {[
+                          { txt: "100%", top: 0 },
+                          { txt: "75%",  top: 25 },
+                          { txt: "50%",  top: 50 },
+                          { txt: "25%",  top: 75 },
+                          { txt: "0%",   top: 100 },
+                        ].map(({ txt, top }) => (
+                          <div
+                            key={txt}
+                            className="absolute left-0 -translate-y-1/2 flex items-center justify-end"
+                            style={{ top }}
+                          >
+                            <h6 className="text-[9px] leading-[9px] tracking-tight">{txt}</h6>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="relative ml-[6px] h-[102px] w-[240px]">
+                        
+                        <div className="absolute top-0 left-0 h-[101px] w-[200px] z-0">
+                          {[0, 25, 50, 75, 100].map((pct) => {
+                            const y = Math.round((pct / 100) * 101);
+                            return (
+                              <div
+                                key={pct}
+                                className="absolute left-0 w-[430px] h-[1px] bg-black/40"
+                                style={{ top: `${y}px` }}
+                              />
+                            );
+                          })}
+                        </div>
+
+                        <div className="absolute top-0 left-0 h-full w-[400px] grid grid-cols-8 z-20">
+                          {[52, 72, 60, 80, 36, 48, 20, 56].map((h, idx) => (
+                            <div key={idx} className="relative flex items-stretch justify-center">
+                              <div className="relative w-[7px] h-full">
+                                
+                                <div
+                                  className="absolute left-0 top-[1px] w-full rounded-full bg-[#D9D9D9]"
+                                  style={{ height: `calc(${100 - h}% - 6px)` }}
+                                />
+                                
+                                <div
+                                  className="absolute left-0 bottom-[1px] w-full rounded-full bg-gradient-to-t from-[#A4B1C3]/80 to-[#3D4759]"
+                                  style={{ height: `${h}%` }}
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="absolute -bottom-[16px] left-0 w-[400px] grid grid-cols-8 text-black/60">
+                          {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m) => (
+                            <div key={m} className="flex justify-center">
+                              <h2 className="text-[10px] leading-none">{m}</h2>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-[10px]">
@@ -299,71 +381,28 @@ const Dashboard = () => {
                       <h1 className="text-[16px] text-[#293141] shrink-0">Top Performance</h1>
 
                       <div className="mt-[10px] flex-1 overflow-y-auto no-scrollbar pr-[2px]">
-                        {/* 1 */}
-                        <div className="flex items-center gap-[10px]">
-                          <div className="relative shrink-0">
-                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
-                              <Image
-                                src="/person images/person 2.jpeg"
-                                alt="Bill Gates"
-                                width={36}
-                                height={36}
-                                className="object-cover"
-                              />
+                        {topEmployees.map((p, idx) => (
+                          <div key={p.name} className={`flex items-center gap-[10px] ${idx === 0 ? "" : "mt-[10px]"}`}>
+                            <div className="relative shrink-0">
+                              <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                                <Image
+                                  src={p.image}
+                                  alt={p.name}
+                                  width={36}
+                                  height={36}
+                                  className="object-cover"
+                                />
+                              </div>
+                              <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
+                                <h6>{idx + 1}</h6>
+                              </div>
                             </div>
-                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
-                              <h6 className="relative left-[0.3px]">1</h6>
-                            </div>
-                          </div>
-                          <div className="min-w-0">
-                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Bill Gates</h2>
-                            <h6 className="text-[10px] text-black/60 leading-[13px]">112 tasks completed</h6>
-                          </div>
-                        </div>
-
-                        {/* 2 */}
-                        <div className="flex items-center gap-[10px] mt-[10px]">
-                          <div className="relative shrink-0">
-                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
-                              <Image
-                                src="/person images/person 5.jpeg"
-                                alt="Roland Busch"
-                                width={36}
-                                height={36}
-                                className="object-cover"
-                              />
-                            </div>
-                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
-                              <h6 className="relative left-[0.4px] top-[0.3px]">2</h6>
+                            <div className="min-w-0">
+                              <h2 className="text-[12px] text-[#293141] font-medium truncate">{p.name}</h2>
+                              <h6 className="text-[10px] text-black/60 leading-[13px]">{p.tasksCompleted} tasks completed</h6>
                             </div>
                           </div>
-                          <div className="min-w-0">
-                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Roland Busch</h2>
-                            <h6 className="text-[10px] text-black/60 leading-[13px]">109 tasks completed</h6>
-                          </div>
-                        </div>
-
-                        {/* 3 */}
-                        <div className="flex items-center gap-[10px] mt-[10px]">
-                          <div className="relative shrink-0">
-                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
-                              <Image
-                                src="/person images/person 6.jpeg"
-                                alt="Arvind Krishna"
-                                width={36}
-                                height={36}
-                                className="object-cover"
-                              />
-                            </div>
-                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
-                              <h6 className="relative left-[0.4px] top-[0.2px]">3</h6>
-                            </div>
-                          </div>
-                          <div className="min-w-0">
-                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Arvind Krishna</h2>
-                            <h6 className="text-[10px] text-black/60 leading-[13px]">103 tasks completed</h6>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </Glass>
