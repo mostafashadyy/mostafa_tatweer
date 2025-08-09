@@ -249,7 +249,126 @@ const Dashboard = () => {
           </Glass>
 
           <Glass width={850} height={253} outerRadius="22px" innerRadius="20px" opacityStart={0.5} opacityMiddle={0} opacityEnd={0.5}>
-            <h2 className="text-[16px] text-[#293141] text-center">Working on it now...</h2>
+            <div className="pt-[20px] px-[30px] text-[#293141] w-full h-full">
+              {/* Header Row */}
+              <div className="flex items-center justify-between">
+                {/* Title */}
+                <h1 className="text-[20px]">Average KPI Score</h1>
+
+                {/* Second Glass */}
+                <Glass width={149} height={40} outerRadius="12px" innerRadius="10px">
+                  <div className="flex items-center justify-between px-[15px] w-full h-full">
+                    <div className="flex items-baseline text-[#293141]">
+                      <h1 className="text-[12px]">Past</h1>
+                      <h6 className="text-[12px] font-bold mx-1">6</h6>
+                      <h1 className="text-[12px]">months</h1>
+                    </div>
+
+                    <Image
+                      src="/icons/arrow down.svg"
+                      alt="icon"
+                      width={11}
+                      height={6}
+                      className="shrink-0"
+                    />
+                  </div>
+                </Glass>
+              </div>
+              
+              {/* Row 2: KPI left, Top Performance glass right */}
+              <div className="flex items-start justify-between">
+                <div>
+                  <h6 className="text-[20px] text-[#293141]">64.78%</h6>
+                  <div className="flex items-center gap-[6px]">
+                    <Image
+                      src="/icons/arrow down filled.svg"
+                      alt="arrow down"
+                      width={10}
+                      height={6}
+                      className="shrink-0"
+                    />
+                    <span className="text-[12px] text-black/60">2.36</span>
+                  </div>
+                </div>
+
+                <div className="mt-[10px]">
+                  <Glass width={250} height={160} outerRadius="12px" innerRadius="10px">
+                    <div className="pl-[20px] pt-[10px] h-full pr-[10px] pb-[10px] flex flex-col">
+                      
+                      <h1 className="text-[16px] text-[#293141] shrink-0">Top Performance</h1>
+
+                      <div className="mt-[10px] flex-1 overflow-y-auto no-scrollbar pr-[2px]">
+                        {/* 1 */}
+                        <div className="flex items-center gap-[10px]">
+                          <div className="relative shrink-0">
+                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <Image
+                                src="/person images/person 2.jpeg"
+                                alt="Bill Gates"
+                                width={36}
+                                height={36}
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
+                              <h6 className="relative left-[0.3px]">1</h6>
+                            </div>
+                          </div>
+                          <div className="min-w-0">
+                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Bill Gates</h2>
+                            <h6 className="text-[10px] text-black/60 leading-[13px]">112 tasks completed</h6>
+                          </div>
+                        </div>
+
+                        {/* 2 */}
+                        <div className="flex items-center gap-[10px] mt-[10px]">
+                          <div className="relative shrink-0">
+                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <Image
+                                src="/person images/person 5.jpeg"
+                                alt="Roland Busch"
+                                width={36}
+                                height={36}
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
+                              <h6 className="relative left-[0.4px] top-[0.3px]">2</h6>
+                            </div>
+                          </div>
+                          <div className="min-w-0">
+                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Roland Busch</h2>
+                            <h6 className="text-[10px] text-black/60 leading-[13px]">109 tasks completed</h6>
+                          </div>
+                        </div>
+
+                        {/* 3 */}
+                        <div className="flex items-center gap-[10px] mt-[10px]">
+                          <div className="relative shrink-0">
+                            <div className="w-[36px] h-[36px] bg-white rounded-full overflow-hidden flex items-center justify-center">
+                              <Image
+                                src="/person images/person 6.jpeg"
+                                alt="Arvind Krishna"
+                                width={36}
+                                height={36}
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="absolute top-[0px] -right-[5px] w-[16px] h-[16px] rounded-full bg-[#293141] text-white text-[8px] border-2 border-white flex items-center justify-center">
+                              <h6 className="relative left-[0.4px] top-[0.2px]">3</h6>
+                            </div>
+                          </div>
+                          <div className="min-w-0">
+                            <h2 className="text-[12px] text-[#293141] font-medium truncate">Arvind Krishna</h2>
+                            <h6 className="text-[10px] text-black/60 leading-[13px]">103 tasks completed</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Glass>
+                </div>
+              </div>
+            </div>
           </Glass>
 
           <Glass width={850} height={191} outerRadius="22px" innerRadius="20px" opacityStart={0.5} opacityMiddle={0} opacityEnd={0.5}>
