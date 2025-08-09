@@ -110,6 +110,7 @@ const Dashboard = () => {
           className="object-cover object-center"
           unoptimized
           priority
+          draggable={false}
         />
       </div>
 
